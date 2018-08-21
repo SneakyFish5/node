@@ -673,8 +673,8 @@ TEST(function test_resolve_failure(done) {
 let getaddrinfoCallbackCalled = false;
 
 console.log(`looking up ${addresses.INET4_HOST}..`);
-
-const cares = process.binding('cares_wrap');
+const { internalBinding } = require('internal/test/binding');
+const cares = internalBinding('cares_wrap');
 const req = new cares.GetAddrInfoReqWrap();
 cares.getaddrinfo(req, addresses.INET4_HOST, 4,
   /* hints */ 0, /* verbatim */ true);
